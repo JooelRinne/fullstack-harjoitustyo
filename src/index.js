@@ -1,40 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App'
 
-class bandi {
-  constructor() {
-    this.name = 'Duo Kasparaitis'
-    this.members = 'Duo'
+const messages = [
+  {
+    id: 1,
+    name: 'Not me',
+    content: 'Great music',
+    date: '2020-01-10T17:30:31.098Z',
+    important: true
+  },
+  {
+    id: 2,
+    name: 'Visitor',
+    content: 'This is shit',
+    date: '2020-01-10T18:39:34.091Z',
+    important: false
+  },
+  {
+    id: 3,
+    name: 'Fsfsfs',
+    content: 'Terrible',
+    date: '2020-01-10T19:20:14.298Z',
+    important: true
   }
+]
 
-  rock() {
-    console.log('jou', this.members)
-  }
-}
-
-const GetThings = ({name}) => {
-
-  const getDate = () => new Date().getFullYear()
-
-  return (
-    <div>
-      <p>
-        You are {name}, and it's {getDate()}
-      </p>
-    </div>
-  )
-  
-}
-
-const App = () => {
-  const duo = new bandi()
-  duo.rock()
-  return (
-    <div>
-      <h1>Duo Kasparaitis</h1>
-      <GetThings name="Zarathustra" />
-    </div>
-  )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App messages={messages}/>, document.getElementById('root'))
