@@ -1,0 +1,57 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "name": "Not me",
+      "content": "Great music",
+      "date": "2020-01-10T17: 30: 31.098Z",
+      "important": true
+    },
+    {
+      "id": 2,
+      "name": "Visitor",
+      "content": "This is shit",
+      "date": "2020-01-10T18: 39: 34.091Z",
+      "important": false
+    },
+    {
+      "id": 3,
+      "name": "Fsfsfs",
+      "content": "Terrible",
+      "date": "2020-01-10T19: 20: 14.298Z",
+      "important": true
+    },
+    {
+      "name": "Not me",
+      "content": "he",
+      "date": "2020-01-27T07:23:44.292Z",
+      "important": true,
+      "id": 4
+    },
+    {
+      "name": "Not me",
+      "content": "jee",
+      "date": "2020-01-27T07:29:35.324Z",
+      "important": true,
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "Not me",
+      "content": "blaa",
+      "date": "2020-01-27T07:32:49.568Z"
+    },
+    {
+      "id": 7,
+      "name": "Not me",
+      "content": "bleh",
+      "date": "2020-01-27T07:42:33.913Z"
+    },
+    {
+      "id": 8,
+      "name": "Not me",
+      "content": "blugh",
+      "date": "2020-01-27T07:42:43.873Z"
+    }
+  ]
+}
