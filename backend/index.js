@@ -1,5 +1,10 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
+app.use(bodyParser.json())
+app.use(cors())
 
 let messages = [
   {
@@ -22,6 +27,14 @@ let messages = [
   }
 ]
 
+const generateId = () => {
+  const maxId = messages.length > 0
+    ? Math.max(...messages.map(message => message.id))
+    : 0
+  
+  return maxId + 1
+}
+
 app.get('/', (req, res) => {
   res.send('<h1>hello world</h1>')
 })
@@ -41,12 +54,39 @@ app.get('/messages/:id', (req, res) => {
   res.json(message)
 })
 
+app.post('/messages', (req, res) => {
+  const body = req.body
+
+  if (body.content === undefined) {
+    return res.status(400).json({
+      error: 'Content missing'
+    })
+  }
+
+  const message = {
+    id: generateId(),
+    name: body.name,
+    content: body.content,   
+    date: new Date()
+  }
+
+  messages = messages.concat(message)
+
+  res.json(message)
+})
+
 app.delete('/messages/:id', (req, res) => {
   const id = Number(req.params.id)
   messages = messages.filter(message => message.id !== id)
 
   res.status(204).end()
 })
+
+const unknownEndpoint = (req, res) => {
+  res.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint)
 const port = 3001
 app.listen(port)
 console.log(`Server running on port ${port}`)
