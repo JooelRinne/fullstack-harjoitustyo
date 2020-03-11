@@ -5,6 +5,7 @@ const cors = require('cors')
 
 app.use(bodyParser.json())
 app.use(cors())
+app.use(express.static('build'))
 
 let messages = [
   {
@@ -35,15 +36,15 @@ const generateId = () => {
   return maxId + 1
 }
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('<h1>hello world</h1>')
 })
 
-app.get('/messages', (req, res) => {
+app.get('/api/messages', (req, res) => {
   res.json(messages)
 })
 
-app.get('/messages/:id', (req, res) => {
+app.get('/api/messages/:id', (req, res) => {
   const id = Number(req.params.id)
   const message = messages.find(message => message.id === id)
   if (message) {
@@ -54,7 +55,7 @@ app.get('/messages/:id', (req, res) => {
   res.json(message)
 })
 
-app.post('/messages', (req, res) => {
+app.post('/api/messages', (req, res) => {
   const body = req.body
 
   if (body.content === undefined) {
@@ -75,7 +76,7 @@ app.post('/messages', (req, res) => {
   res.json(message)
 })
 
-app.delete('/messages/:id', (req, res) => {
+app.delete('/api/messages/:id', (req, res) => {
   const id = Number(req.params.id)
   messages = messages.filter(message => message.id !== id)
 
